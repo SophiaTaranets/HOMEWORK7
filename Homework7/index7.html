@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!----
+    <p id ="text">I learning JavaScript events!</p> 
+    <div>
+	    <button type = "button" onclick = "changeCSS()" id = "myBtn">Change style!</button>
+    </div>
+    -->
+
+    <!----
+    <div class="btn-group">
+        <button onclick="bluePage()">Click to make the page blue</button>
+        <button id = "my2Btn">Double click to make the page pink</button>
+        <button onmousedown="brownPage()" onmouseup="whitePage ()" >Click and hold to make the mage brown</button>
+        <a id = "myLink" href="https://developer.mozilla.org/">Hover over to make page yellow</a>
+      </div>
+    -->
+
+    <form>
+        <select id = "selector">
+            <option id = "s1" >Peter</option>
+            <option >John</option>
+            <option >Alise</option>
+            <option >Alex</option>
+            <option >Iren</option>
+        </select>
+        <input type = "button" id="my4Btn" value="Coose and Delete">
+    </form>
+
+    <button id = "myLiveBtn"> Live button </button>
+    <p id = "test1"></p>
+
+    <div id = "test2"></div>
+
+   <select name = "country" id = "country">
+       <option value="ger">Germany</option>
+       <option value="usa">USA</option>
+       <option value="ukr">Ukraine</option>
+   </select>
+
+   <select name="cities" id="cities"></select>
+   <p></p>
+
+
+
+     
+
+
+
+    <script>
+        // **************   Task1 ************** 
+        /*
+        let openWindow = window.open(" "," ", "width = 100, height = 100");
+        setTimeout(function(){
+            openWindow.resizeTo(500,500)
+        },2000);
+        setTimeout(function(){
+            openWindow.moveTo(200,200)
+        },4000);
+        setTimeout(function(){
+            openWindow.close()
+        },6000);
+        */
+
+        // **************   Task2 **************  
+        /*
+        document.getElementById("myBtn").onclick = function () {
+            document.getElementsByTagName("p")[0].style.color = "orange";
+            document.getElementsByTagName("p")[0].style.fontSize = "20px";
+            document.getElementsByTagName("p")[0].style.fontFamily = "Comic Sans MS";
+        }
+        */
+        // **************   Task3 **************
+        /*
+        function bluePage () {
+            document.body.style.backgroundColor = "blue";
+        }
+
+        document.getElementById("my2Btn").ondblclick = function () {
+            document.body.style.backgroundColor = "pink";
+        }
+         
+        function brownPage () {
+            document.body.style.backgroundColor = "brown";
+        }
+        
+        function whitePage () {
+            document.body.style.backgroundColor = "white";
+        }
+
+        document.getElementById("myLink").onmouseover = function() {
+            document.body.style.backgroundColor = "yellow";
+        }
+
+        document.getElementById("myLink").onmouseout = function() {
+            document.body.style.backgroundColor = "white";
+        }
+        */
+        // **************   Task4 **************
+       /*
+        my4Btn.addEventListener('click', deleteElement);
+        function deleteElement () {
+           let currentEl = document.getElementById("selector");
+           currentEl.remove(currentEl.selectedIndex); 
+        }
+        */
+        
+        
+        // **************   Task5 **************
+        /*
+        let a = document.getElementById("myLiveBtn");
+        a.addEventListener("mouseover", mouseOver);
+        a.addEventListener("click", mouseClick);
+        a.addEventListener("mouseout", mouseOut);
+
+        function mouseOver () {
+            document.getElementById("test1").innerHTML += "Mouse on me!<br>";
+        }
+        function mouseClick () {
+            document.getElementById("test1").innerHTML += "I was pressed!<br>";
+        }
+        function mouseOut () {
+            document.getElementById("test1").innerHTML += "Mouse is not on me!<br>";
+        }
+        */
+        
+        // **************   Task6 **************
+        /*
+        function windowSize(){
+            let heigh = window.innerHeight;
+            let widt = window.innerWidth;
+            let currentSize = "Width: " + widt + ", " + "Height: " + heigh;
+            document.getElementById("test2").innerHTML = currentSize;
+        }
+        
+        window.addEventListener("resize", windowSize);
+        */
+        // **************   Task7 **************
+
+        //create list 
+        let citiesList = {
+            "ger": ["Munhen", "Berlin", "Munster","Dortmund"],
+            "usa": ["New York", "Boston", "Chikago", "Ostin"],
+            "ukr": ["Lviv","Kyiv","Kharkiv","Odessa"]
+        }
+
+        let primeSelect = document.getElementById("country");
+        primeSelect.addEventListener("change",createList);
+        primeSelect.addEventListener("change",toParagraph);
+
+        let citiesSelect = document.getElementById("cities");
+        citiesSelect.addEventListener("change",toParagraph);
+
+        function createList(){
+            citiesSelect.innerHTML = "";
+            let selectedCountry = primeSelect.value;
+            for (let i = 0; i<citiesList[selectedCountry].length;i++){
+                let newOption = document.createElement("option");
+                newOption.innerHTML = citiesList[selectedCountry][i];
+                citiesSelect.appendChild(newOption);
+            }
+        }
+
+        let parag = document.querySelector("p");
+        function toParagraph(){
+            parag.innerHTML="";
+            parag.innerHTML=primeSelect.options[primeSelect.selectedIndex].text + ", " + citiesSelct.options[citiesSelct.selectedIndex].text;
+        }
+
+
+        
+        
+    </script>
+</body>
+</html>
